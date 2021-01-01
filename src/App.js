@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles.css";
 
-export default function App() {
+const App = () => {
+  const [item, setItem] = useState(0);
+  const increase = () => setItem(item + 1);
+  const decrease = () => setItem(item - 1);
   return (
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
-    </div>
+    <>
+      <h1>{item}</h1>
+      <button onClick={increase}>Increase</button>
+      <button onClick={decrease}>Decrease</button>
+    </>
   );
-}
+};
+
+export default App;
