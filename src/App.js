@@ -1,16 +1,23 @@
 import React, { useState } from "react";
 import "./styles.css";
 
+const useInput = (initialValue) => {
+  const [value, setValue] = useState(initialValue);
+  const onChange = (event) => {
+    const {
+      target: { value }
+    } = event;
+    setValue(value);
+  };
+  return { value, onChange };
+};
+
 const App = () => {
-  const [item, setItem] = useState(0);
-  const increase = () => setItem(item + 1);
-  const decrease = () => setItem(item - 1);
+  const name = useInput("Mr.");
   return (
-    <>
-      <h1>{item}</h1>
-      <button onClick={increase}>Increase</button>
-      <button onClick={decrease}>Decrease</button>
-    </>
+    <div>
+      <input placeholder="Name" {...name} />
+    </div>
   );
 };
 
